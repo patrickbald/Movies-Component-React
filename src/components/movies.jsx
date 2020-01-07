@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
 
 class Movies extends Component {
+  // state holds the data and information that will be used in the component
   state = {
     movies: getMovies() // initialize movies array
   };
@@ -9,7 +10,9 @@ class Movies extends Component {
   // to handle delete event
   // dont forget to add unique id to each movie element with key={}
   handleDelete = movie => {
+    // create new movies array without the movie that was deleted using filer()
     const movies = this.state.movies.filter(m => m._id !== movie._id);
+    // reset the state to the new movies array
     this.setState({ movies: movies });
   };
 
@@ -54,4 +57,5 @@ class Movies extends Component {
   }
 }
 
+// export the movies component to be used in App.js
 export default Movies;
